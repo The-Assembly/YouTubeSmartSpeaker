@@ -170,7 +170,7 @@ function createPlaylistItem(c,vThumb,vId,vTitle) {
     var vclick = "loadVid(\""+vId+"\"); player.vidcount="+c+";";
     var notFoundString = '';
     if (vId == "Not Found") {
-        vclick = "editSearchTerm(0);";
+        vclick = "#";
         notFoundString = "<input id='not-found' value='"+ player.listArray[c] +"'> ";
     }
 
