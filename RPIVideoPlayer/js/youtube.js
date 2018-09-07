@@ -88,13 +88,6 @@ var search = function(query,counter) {
 		vTitleArr.push(vTitle);
 		vThumbArr.push(vThumb);
 
-        //global object of all the song results
-		player.vidObjArray[c] = {
-			vid:vIdArr,
-			title:vTitleArr, 
-			thumb:vThumbArr
-		};
-
 		//display list, use only first result of each
 		if (i === 0) {
 			player.topvIdArray.push(vId);	
@@ -116,19 +109,18 @@ var search = function(query,counter) {
 };
 
 function multiSearch() {
-        player.vidObjArray = {}; 
         player.topvIdArray = []; 
         player.topvTitleArray =[]; 
         player.topvThumbArray = []; 
         player.listArray = [];
-        player.vidcount = 0; player.playcount = 0; player.done = false; 
+        player.vidcount = 0; 
+        player.done = false; 
         
         if (player.topvIdArray) {
             player.topvIdArray.length = 0; player.topvTitleArray.length = 0; player.topvThumbArray.length = 0;
             player.listArray.length = 0;
         }
    
-        //var searchTerm = $.url.attr('searchTerm');
         var searchTerm = $.getQuery('searchTerm');
 
         $.getJSON(
@@ -192,12 +184,14 @@ function playPause() {
 function nextVideo(next) {
     var totalvids = player.topvIdArray.length;
     if (next===true) {
-        player.vidcount++; player.playcount++;
-        if (player.vidcount >= totalvids) player.vidcount = 0;
+        player.vidcount++; 
+        if (player.vidcount >= totalvids) 
+            player.vidcount = 0;
         $('#search-container').append($('#search-container div.searchresult:first'));
     } else { 
-        player.vidcount--; player.playcount--;
-        if ((player.vidcount < 0) || (player.vidcount=='undefined')) player.vidcount = totalvids-1;
+        player.vidcount--; 
+        if ((player.vidcount < 0) || (player.vidcount=='undefined')) 
+            player.vidcount = totalvids-1;
         $('#search-container').prepend($('#search-container div.searchresult:last'));
     }
     
@@ -225,14 +219,8 @@ function onPlayerStateChange(e) {
     else 
         $("#playpause").text("Pause")
     
-	//if video is done, play next
 	if (e.data === 0) {
-		var totalvids = player.topvIdArray.length;
-		if (player.playcount+1 < totalvids) {
-			nextVideo(true);
-		} else {
-			player.playcount = -1;
-        }render
+        nextVideo(true);
     }
 }
 
