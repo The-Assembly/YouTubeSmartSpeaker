@@ -26,7 +26,7 @@ googleApiClientReady = function() {
 };
 
 function handleAPILoaded() {
-    gapi.client.setApiKey("AIzaSyCr5PexuEF_S43HH02si2uj32O4n3FWodc");
+    gapi.client.setApiKey("{YOUTUBE API KEY}");
 
     isAPILoaded = true;
 
@@ -132,7 +132,7 @@ function multiSearch() {
         var searchTerm = $.getQuery('searchTerm');
 
         $.getJSON(
-            'http://ws.audioscrobbler.com/2.0/?method=artist.gettoptracks&artist='+searchTerm +'&autocorrect=1&api_key=946a0b231980d52f90b8a31e15bccb16&limit=20&format=json',
+            'http://ws.audioscrobbler.com/2.0/?method=artist.gettoptracks&artist='+searchTerm +'&autocorrect=1&api_key={LASTFM API KEY}&limit=20&format=json',
             function(data)
             {
 				var artistName = data.toptracks['@attr'].artist

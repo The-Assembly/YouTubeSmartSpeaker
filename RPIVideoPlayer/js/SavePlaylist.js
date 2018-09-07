@@ -2,7 +2,7 @@ var playlistID;
 
 function createPlaylist() {
     gapi.auth.authorize({
-       client_id: '348724172126-lddks6sqjkeq4qs1vb0mll4tbvde0ar6.apps.googleusercontent.com',
+       client_id: '{YOUTUBE API CLIENT ID}',
        scope: 'https://www.googleapis.com/auth/youtube',
         immediate: false
         }, handleAuthResult);
