@@ -96,8 +96,6 @@ var search = function(query,counter) {
 			//start the first video right away while the playlist loads
 
 			if (player.topvIdArray.length == 1) {
-				//only cue on the first search, keep the video running on subsequent searches
-				//////if (count==1) cuePlayer();
 				if (isMultiSearchDone) loadVid(player.topvIdArray[0], 0, "medium"); 
 			} 
 
@@ -203,13 +201,6 @@ function loadVid(vidId) {
     if (player.loadVideoById) {
         player.loadVideoById(vidId);
         if (player.topvTitleArray[player.vidcount]) document.title = player.topvTitleArray[player.vidcount];
-    } 
-}
-
-function cuePlayer() {
-    //check if the player object is loaded
-    if (player.cueVideoById) {
-        player.cueVideoById(player.topvIdArray[0]);
     } 
 }
 
